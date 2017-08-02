@@ -18,3 +18,11 @@ description = "Sample rust hello world on camkes"
 name = "main"
 path = "src/main.rs"
 crate-type = ["staticlib"]
+
+[dependencies]
+sel4-sys = "0.0.26"
+# sel4-start = "0.0.26"
+sel4-start = { path = "/home/gdritter/build/robigalia/sel4-start" }
+
+[dependencies.compiler_builtins]
+git = "https://github.com/rust-lang-nursery/compiler-builtins"
