@@ -9,5 +9,5 @@
 #
 
 apps-$(CONFIG_APP_HELLORUST) += hellorust
-hellorust: rust_sysroot libsel4 libmuslc libsel4platsupport libsel4muslccamkes libsel4camkes \
-       libsel4sync libsel4debug  libsel4muslcsys rust_sysroot libcompiler-rt
+hellorust: libsel4 libmuslc libsel4platsupport libsel4muslccamkes libsel4camkes \
+       libsel4sync libsel4debug  libsel4muslcsys
