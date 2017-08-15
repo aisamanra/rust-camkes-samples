@@ -1,0 +1,13 @@
+[target.i686-sel4-robigalia.dependencies]
+collections = {}
+alloc = {}
+
+[target.x86_64-sel4-robigalia.dependencies]
+collections = {}
+alloc = {}
+
+# [target.i686-sel4-robigalia.dependencies.std]
+# features = ["jemalloc"]
+
+# [target.x86_64-sel4-robigalia.dependencies.std]
+# features = ["jemalloc"]
