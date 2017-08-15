@@ -84,9 +84,11 @@
         <linkfile src="keyvalue" dest="apps/keyvalue"/>
         <linkfile src="libbtreemap" dest="libs/libbtreemap"/>
         <linkfile src="Makefile" dest="Makefile"/>
+        <linkfile src="start.sh" dest="start.sh"/>
     </project>
 
-    <project name="xargo" path="tools/xargo" remote="seL4-projects" revision="sel4"/>
-    <project name="compiler-rt-sys" path="projects/compiler-rt-sys" remote="seL4-projects"/>
+    <project name="xargo" path="tools/xargo" remote="seL4-projects"/>
+
+<!--    <project name="compiler-rt-sys" path="projects/compiler-rt-sys" remote="seL4-projects"/> -->
 
 </manifest>
