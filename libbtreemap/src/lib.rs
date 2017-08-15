@@ -1,24 +1,19 @@
-// Copyright 2016, NICTA
-//
-// This software may be distributed and modified according to the terms of
-// the BSD 2-Clause license. Note that NO WARRANTY is provided.
-// See "LICENSE_BSD2.txt" for details.
-//
-// @TAG(NICTA_BSD)
-//
+#![no_std]
 
-extern crate libc;
+#![feature(alloc, lang_items, allocator_internals)]
+#![default_lib_allocator]
 
-use std::slice;
-use std::collections::BTreeMap;
+#[lang = "panic_fmt"] fn panic_fmt() -> ! { loop {} }
 
-use libc::{uintptr_t, uint32_t};
+extern crate alloc;
 
+use alloc::boxed::Box;
+use alloc::{BTreeMap,slice};
 
 // This section defines c-like structs
 
 #[repr(C)]
-pub struct CBTreeMap(BTreeMap<uint32_t, uint32_t>);
+pub struct CBTreeMap(BTreeMap<i32, i32>);
 
 #[repr(C)]
 pub enum Option_C {
@@ -29,15 +24,15 @@ pub enum Option_C {
 #[repr(C)]
 pub struct OptionVec_culong {
     option_type: Option_C,
-    len: uintptr_t,
-    max_size: uintptr_t,
-    elements: *mut uint32_t,
+    len: usize,
+    max_size: usize,
+    elements: *mut i32,
 }
 
 #[repr(C)]
 pub struct OptionValue_culong {
     option_type: Option_C,
-    val: uint32_t,
+    val: i32,
 }
 
 // Create new btreemap and return mutable pointer
@@ -55,19 +50,18 @@ pub extern "C" fn btreemap_new() -> *mut CBTreeMap {
 
 
 #[no_mangle]
-pub extern "C" fn btreemap_contains_key(btreemap: *mut CBTreeMap, key: uint32_t) -> bool {
+pub extern "C" fn btreemap_contains_key(btreemap: *mut CBTreeMap, key: i32) -> bool {
     unsafe { (*btreemap).0.contains_key(&key) }
 }
 
 
 #[no_mangle]
 pub extern "C" fn btreemap_insert(btreemap: *mut CBTreeMap,
-                                  key: uint32_t,
-                                  value: uint32_t,
+                                  key: i32,
+                                  value: i32,
                                   res: *mut OptionValue_culong)
-                                  -> uint32_t {
+                                  -> i32 {
     let &mut OptionValue_culong { ref mut option_type, ref mut val } = unsafe { &mut *res };
-    println!("key {:?} value {:?} ", key, value);
 
     match unsafe { (*btreemap).0.insert(key, value) } {
         Some(old) => {
@@ -82,7 +76,7 @@ pub extern "C" fn btreemap_insert(btreemap: *mut CBTreeMap,
 }
 
 #[no_mangle]
-pub extern "C" fn btreemap_keys(btreemap: *mut CBTreeMap, res: *mut OptionVec_culong) -> uint32_t {
+pub extern "C" fn btreemap_keys(btreemap: *mut CBTreeMap, res: *mut OptionVec_culong) -> i32 {
     let &mut OptionVec_culong {
          ref mut option_type,
          ref mut len,
@@ -99,7 +93,7 @@ pub extern "C" fn btreemap_keys(btreemap: *mut CBTreeMap, res: *mut OptionVec_cu
 
             // Copy the result into the provided buffer
             *option_type = Option_C::Some;
-            let a: &mut [uint32_t] = unsafe { slice::from_raw_parts_mut(*elements, *max_size) };
+            let a: &mut [i32] = unsafe { slice::from_raw_parts_mut(*elements, *max_size) };
             for (&x, p) in keys.zip(a) {
                 *p = x;
             }
@@ -111,7 +105,7 @@ pub extern "C" fn btreemap_keys(btreemap: *mut CBTreeMap, res: *mut OptionVec_cu
 #[no_mangle]
 pub extern "C" fn btreemap_values(btreemap: *mut CBTreeMap,
                                   res: *mut OptionVec_culong)
-                                  -> uint32_t {
+                                  -> i32 {
     let &mut OptionVec_culong {
          ref mut option_type,
          ref mut len,
@@ -128,7 +122,7 @@ pub extern "C" fn btreemap_values(btreemap: *mut CBTreeMap,
 
             // Copy the result into the provided buffer
             *option_type = Option_C::Some;
-            let a: &mut [uint32_t] = unsafe { slice::from_raw_parts_mut(*elements, *max_size) };
+            let a: &mut [i32] = unsafe { slice::from_raw_parts_mut(*elements, *max_size) };
             for (&x, p) in vec.zip(a) {
                 *p = x;
             }
@@ -140,9 +134,9 @@ pub extern "C" fn btreemap_values(btreemap: *mut CBTreeMap,
 
 #[no_mangle]
 pub extern "C" fn btreemap_remove(btreemap: *mut CBTreeMap,
-                                  key: uint32_t,
+                                  key: i32,
                                   res: *mut OptionValue_culong)
-                                  -> uint32_t {
+                                  -> i32 {
     let &mut OptionValue_culong { ref mut option_type, ref mut val } = unsafe { &mut *res };
     match unsafe { (*btreemap).0.remove(&key) } {
         Some(old) => {
@@ -157,8 +151,8 @@ pub extern "C" fn btreemap_remove(btreemap: *mut CBTreeMap,
 }
 
 #[no_mangle]
-pub extern "C" fn btreemap_len(btreemap: *mut CBTreeMap) -> uintptr_t {
-    unsafe { (*btreemap).0.len() as uintptr_t }
+pub extern "C" fn btreemap_len(btreemap: *mut CBTreeMap) -> usize {
+    unsafe { (*btreemap).0.len() as usize }
 }
 
 

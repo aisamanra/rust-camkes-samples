@@ -9,5 +9,5 @@
 #
 
 apps-$(CONFIG_APP_KEYVALUE) += keyvalue
-keyvalue: rust_sysroot libsel4 libmuslc libsel4platsupport libsel4muslccamkes libsel4camkes \
-       libsel4sync libsel4debug  libsel4muslcsys libbtreemap libcompiler-rt
+keyvalue: libsel4 libmuslc libsel4platsupport libsel4muslccamkes libsel4camkes \
+       libsel4sync libsel4debug  libsel4muslcsys libbtreemap
