@@ -21,8 +21,12 @@ path = "src/lib.rs"
 crate-type = ["staticlib"]
 
 [dependencies]
-libc = "0.2.10"
+sel4-start = { path = "/home/gdritter/build/robigalia/sel4-start" }
+sel4-alloc = { path = "/home/gdritter/build/robigalia/sel4-alloc" }
 
+[dependencies.sel4-sys]
+path = "/home/gdritter/build/robigalia/sel4-sys"
+default-features = false
 
-[build-dependencies]
-rusty-cheddar = "0.3.0"
+[dependencies.compiler_builtins]
+git = "https://github.com/rust-lang-nursery/compiler-builtins"

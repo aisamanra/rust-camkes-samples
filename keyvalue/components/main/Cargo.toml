@@ -20,8 +20,15 @@ name = "main"
 path = "src/main.rs"
 crate-type = ["staticlib"]
 
-
 [build-dependencies]
 bindgen = "0.17.0"
 
 [dependencies]
+sel4-start = { path = "/home/gdritter/build/robigalia/sel4-start" }
+
+[dependencies.sel4-sys]
+path = "/home/gdritter/build/robigalia/sel4-sys"
+default-features = false
+
+[dependencies.compiler_builtins]
+git = "https://github.com/rust-lang-nursery/compiler-builtins"
