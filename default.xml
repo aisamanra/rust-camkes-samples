@@ -93,8 +93,6 @@
 
     <project name="xargo" path="tools/xargo" remote="seL4-projects"/>
 
-    <project name="xargo" path="tools/xargo" remote="seL4-projects"/>
-
     <project name="sel4-start" path="robigalia/sel4-start" remote="robigalia" />
 <!--    <project name="compiler-rt-sys" path="projects/compiler-rt-sys" remote="seL4-projects"/> -->
 
