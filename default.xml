@@ -29,8 +29,14 @@
         remote="seL4"
     />
 
+    <project name="sel4-start" path="robigalia/sel4-start" remote="robigalia" />
+    <project name="sel4-sys" path="robigalia/sel4-start" remote="robigalia" />
+    <project name="rust-sel4" path="robigalia/sel4-start" remote="robigalia" />
+
     <project name="seL4" path="kernel">
         <linkfile src="libsel4" dest="libs/libsel4"/>
+        <linkfile src="." dest="robigalia/sel4"/>
+        <linkfile src="." dest="robigalia/sel4-sys/seL4"/>
     </project>
 
     <project name="seL4_tools" path="projects/seL4_tools">
@@ -93,7 +99,6 @@
 
     <project name="xargo" path="tools/xargo" remote="seL4-projects"/>
 
-    <project name="sel4-start" path="robigalia/sel4-start" remote="robigalia" />
 <!--    <project name="compiler-rt-sys" path="projects/compiler-rt-sys" remote="seL4-projects"/> -->
 
 </manifest>
