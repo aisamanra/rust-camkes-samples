@@ -30,8 +30,8 @@
     />
 
     <project name="sel4-start" path="robigalia/sel4-start" remote="robigalia" />
-    <project name="sel4-sys" path="robigalia/sel4-start" remote="robigalia" />
-    <project name="rust-sel4" path="robigalia/sel4-start" remote="robigalia" />
+    <project name="sel4-sys" path="robigalia/sel4-sys" remote="robigalia" />
+    <project name="rust-sel4" path="robigalia/rust-sel4" remote="robigalia" />
 
     <project name="seL4" path="kernel">
         <linkfile src="libsel4" dest="libs/libsel4"/>
