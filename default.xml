@@ -19,20 +19,15 @@
         fetch="."
         />
 
-    <remote name="robigalia"
-            fetch="https://gitlab.com/robigalia"
-            />
-
-
     <!-- default revision for each project, and name of the remote -->
     <default revision="master"
         remote="seL4"
     />
 
-    <project name="sel4-start" path="robigalia/sel4-start" remote="robigalia" />
-    <project name="sel4-sys" path="robigalia/sel4-sys" remote="robigalia" />
-    <project name="rust-sel4" path="robigalia/rust-sel4" remote="robigalia" />
-    <project name="sel4-config" path="robigalia/sel4-config" remote="robigalia" />
+    <project name="robigalia-sel4-start" path="robigalia/sel4-start" />
+    <project name="robigalia-sel4-sys" path="robigalia/sel4-sys" />
+    <project name="robigalia-rust-sel4" path="robigalia/rust-sel4" />
+    <project name="robigalia-sel4-config" path="robigalia/sel4-config" />
 
     <project name="seL4" path="kernel">
         <linkfile src="libsel4" dest="libs/libsel4"/>
