@@ -20,10 +20,10 @@ path = "src/main.rs"
 crate-type = ["staticlib"]
 
 [dependencies]
-sel4-start = { path = "/home/gdritter/build/robigalia/sel4-start" }
+sel4-start = { path = "../../../../robigalia/sel4-start" }
 
 [dependencies.sel4-sys]
-path = "/home/gdritter/build/robigalia/sel4-sys"
+sel4-start = { path = "../../../../robigalia/sel4-sys" }
 default-features = false
 
 [dependencies.compiler_builtins]
