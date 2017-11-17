@@ -1,6 +1,8 @@
-#![feature(compiler_builtins_lib)]
+#![feature(core_intrinsics, compiler_builtins_lib)]
 #![no_std]
-use core::fmt::{self,Write};
+use core::fmt;
+use core::fmt::Write;
+use core::intrinsics;
 
 extern crate sel4_start;
 extern crate sel4_sys;
@@ -17,19 +19,8 @@ impl fmt::Write for SeL4Serial {
     }
 }
 
-// just a trivial computation, for good measure
-fn fact(n: u32) -> u32 {
-    if n == 0 {
-        1
-    } else {
-        n * fact(n-1)
-    }
-}
-
 macro_rules! print {
-    ($($arg:tt)*) => {
-        let _ = SeL4Serial.write_fmt(format_args!($($arg)*));
-    };
+    ($($arg:tt)*) => (SeL4Serial.write_fmt(format_args!($($arg)*)));
 }
 
 macro_rules! println {
@@ -39,7 +30,6 @@ macro_rules! println {
 
 // This is the camkes entry point for this app
 #[no_mangle]
-pub extern "C" fn run() -> isize {
-    println!("fact(5) = {}", fact(5));
-    0
+pub extern "C" fn hconn_do_the_thing(n: u32) {
+    println!("the thing is done with {}", n);
 }

@@ -1,6 +1,6 @@
 #![no_std]
 
-#![feature(alloc, lang_items, allocator_internals)]
+#![feature(alloc, allocator_internals, lang_items, core_intrinsics, compiler_builtins_lib)]
 #![default_lib_allocator]
 
 #[lang = "panic_fmt"] fn panic_fmt() -> ! { loop {} }

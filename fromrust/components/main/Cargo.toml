@@ -9,26 +9,25 @@
 #
 
 [package]
-name = "btreemap"
+name = "main"
 version = "0.0.1"
 authors = ["Kent McLeod <kent.mcleod@data61.csiro.au>"]
-description = "expose some btreemap functions as c symbols"
+description = "Sample rust hello world on camkes"
 build = "build.rs"
 
+[build-dependencies]
+bindgen = "0.31.3"
+
 [lib]
-name = "btreemap"
-path = "src/lib.rs"
+name = "main"
+path = "src/main.rs"
 crate-type = ["staticlib"]
 
-[build-dependencies]
-rusty-cheddar = { path = "/home/gdritter/build/rusty-cheddar" }
-
 [dependencies]
-sel4-start = { path = "../../robigalia/sel4-start" }
-# sel4-alloc = { path = "/home/gdritter/build/robigalia/sel4-alloc" }
+sel4-start = { path = "../../../../robigalia/sel4-start" }
 
 [dependencies.sel4-sys]
-path = "../../robigalia/sel4-sys"
+sel4-start = { path = "../../../../robigalia/sel4-sys" }
 default-features = false
 
 [dependencies.compiler_builtins]

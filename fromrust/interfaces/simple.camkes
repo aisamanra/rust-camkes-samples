@@ -1,0 +1,3 @@
+procedure simple_iface {
+  void do_the_thing(in uint32_t n);
+};

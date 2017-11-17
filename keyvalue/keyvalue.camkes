@@ -26,7 +26,7 @@ assembly {
 
         connection seL4SharedData main_dataport(from main_object.btreemap_buffer, to store_object.main_btreemap_buffer);
         connection seL4SharedData main_dataport2(from secondary_object.btreemap_buffer, to store_object.secondary_btreemap_buffer);
-        connection seL4Asynch barrier_evt(from secondary_object.barrier_event, to main_object.barrier_event);
+        connection seL4Notification barrier_evt(from secondary_object.barrier_event, to main_object.barrier_event);
 
 	}
 

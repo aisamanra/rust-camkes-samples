@@ -1,0 +1,18 @@
+import "components/main/main.camkes";
+import "components/helper/helper.camkes";
+import <std_connector.camkes>;
+
+/* Define our assembly to just contain the simple main object which is imported above */
+assembly {
+  composition {
+    component main main_object;
+    component helper helper_object;
+
+    connection seL4RPCCall call_from_rust(from main_object.conn, to helper_object.hconn);
+  }
+
+  configuration
+  {
+    /* No configuration */
+  }
+}

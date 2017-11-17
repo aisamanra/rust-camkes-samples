@@ -1,29 +1,9 @@
-// Copyright 2016, NICTA
-//
-// This software may be distributed and modified according to the terms of
-// the BSD 2-Clause license. Note that NO WARRANTY is provided.
-// See "LICENSE_BSD2.txt" for details.
-//
-// @TAG(NICTA_BSD)
-//
-
-
 extern crate bindgen;
 
 use std::default::Default;
 use std::env;
-use std::path::{PathBuf};
+use std::path::PathBuf;
 
-/**
- * This build.rs script is run before the rust source is compiled and we use it to
- * generate rust bindings of the camkes.h symbols so that we can call them easier.
- *
- * The generated file can be found in (Must compile at least once):
- *   target/{target}/{debug|release}/build/{library or binary name}/out/generated.rs
- *
- * (note: The camkes.h file that gets used can be found at:
- *   build/{arm/imx31|or another target}/keyvalue/include/main_object/generated/camkes.h)
- */
 fn main() {
 
     // Setup build and stage paths from global env variables provided by kbuild

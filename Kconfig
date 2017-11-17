@@ -45,6 +45,8 @@ menu "Applications"
     source "apps/capdl-loader-experimental/Kconfig"
     source "apps/hellorust/Kconfig"
     source "apps/keyvalue/Kconfig"
+    source "apps/fromrust/Kconfig"
+    source "apps/torust/Kconfig"
 endmenu
 
 source "tools/camkes/Kconfig"

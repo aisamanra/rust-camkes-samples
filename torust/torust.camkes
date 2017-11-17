@@ -1,0 +1,12 @@
+import <std_connector.camkes>;
+import "components/main/main.camkes";
+import "components/helper/helper.camkes";
+
+assembly {
+  composition {
+    component main main_object;
+    component helper helper_object;
+
+    connection seL4RPCCall call_to_rust(from main_object.conn, to helper_object.hconn);
+  }
+}

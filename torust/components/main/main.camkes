@@ -1,0 +1,6 @@
+import "../../interfaces/simple.camkes";
+
+component main {
+  control;
+  uses simple_iface conn;
+}

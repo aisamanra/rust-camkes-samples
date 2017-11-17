@@ -6,15 +6,19 @@
 //
 // @TAG(NICTA_BSD)
 //
-#![feature(core_intrinsics, compiler_builtins_lib)]
+#![feature(alloc, core_intrinsics, compiler_builtins_lib)]
 #![no_std]
 use core::fmt;
 use core::fmt::Write;
 use core::intrinsics;
+use alloc::vec::Vec;
 
+extern crate alloc;
 extern crate sel4_start;
 extern crate sel4_sys;
 extern crate compiler_builtins;
+
+pub mod ctypes;
 
 struct SeL4Serial;
 
@@ -47,10 +51,10 @@ pub extern "C" fn run() -> isize {
     println!("Hello, world!!");
 
     // Check that when we ask for an invalid key it isn't there.
-    assert_eq!{unsafe {camkes::camkes_btreemap_contains_key(43)}, false as u8};
+    assert_eq!{unsafe {camkes::camkes_btreemap_contains_key(43)}, false};
     unsafe { camkes::camkes_btreemap_insert(43, 54) };
     // Check that when we ask for a valid key, it is there.
-    assert_eq!{unsafe {camkes::camkes_btreemap_contains_key(43)}, true as u8};
+    assert_eq!{unsafe {camkes::camkes_btreemap_contains_key(43)}, true};
 
     // Insert some key values.
     unsafe { camkes::camkes_btreemap_insert(44, 55) };
@@ -61,7 +65,7 @@ pub extern "C" fn run() -> isize {
     // Insert a value for a key that we have already used and check we get the old value back.
     let res = unsafe { camkes::camkes_btreemap_insert(43, 59) };
     assert_eq!(res.option_type as usize,
-               camkes::Enum_Option_C::Some as usize);
+               camkes::Option_C_Some as usize);
     assert_eq!(res.val, 54);
 
     // Wait for the other app (secondary) to finish inserting keys and values
@@ -80,7 +84,7 @@ pub extern "C" fn run() -> isize {
     println!("Keys: {:?}", vec);
     let keys = [1, 2, 3, 4, 5, 43, 44, 45, 46, 47];
     assert_eq!(vec.as_slice(), keys);
-    std::mem::forget(vec);
+    // std::mem::forget(vec);
 
     // Get a list of values and check that the values are also correct.
     let res = unsafe { camkes::camkes_btreemap_values() };
@@ -92,7 +96,7 @@ pub extern "C" fn run() -> isize {
     println!("values: {:?}", vec);
     let values = [2, 3, 4, 5, 6, 59, 55, 56, 57, 58];
     assert_eq!(vec.as_slice(), values);
-    std::mem::forget(vec);
+    // std::mem::forget(vec);
 
     // Test passed finish executing
     println!("main component done");

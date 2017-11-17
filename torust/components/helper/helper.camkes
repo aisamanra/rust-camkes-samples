@@ -1,0 +1,3 @@
+import "../../interfaces/simple.camkes";
+
+component helper { provides simple_iface hconn; }
