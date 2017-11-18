@@ -38,7 +38,6 @@ menu "Libraries"
     source "libs/libsel4simple-default/Kconfig"
     source "libs/libethdrivers/Kconfig"
     source "libs/libbtreemap/Kconfig"
-    source "libs/libcompiler-rt/Kconfig"
 endmenu
 
 menu "Applications"

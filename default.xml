@@ -76,10 +76,12 @@
         <linkfile src="libutils" dest="libs/libutils"/>
     	<linkfile src="libethdrivers" dest="libs/libethdrivers"/>
     </project>
+    <!--
     <project name="seL4_rust_libs" path="projects/seL4_rust_libs" remote="seL4-projects">
       <linkfile src="libcompiler-rt" dest="libs/libcompiler-rt"/>
-    </project>
-    <project name="musllibc" path="libs/libmuslc" revision="rust"/>
+      </project>
+    -->
+    <project name="musllibc" path="libs/libmuslc" />
 
 	 <!-- list of 'projects' (i.e repositories), path is relative to the path in remote above -->
     <project name="rust-camkes-samples" path="projects/rust-camkes-samples" remote="seL4-projects" revision="master">
@@ -94,7 +96,5 @@
     </project>
 
     <project name="xargo" path="tools/xargo" remote="seL4-projects"/>
-
-<!--    <project name="compiler-rt-sys" path="projects/compiler-rt-sys" remote="seL4-projects"/> -->
 
 </manifest>
