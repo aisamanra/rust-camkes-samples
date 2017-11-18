@@ -86,8 +86,8 @@
        	<linkfile src="configs" dest="configs"/>
  	    <linkfile src="hellorust" dest="apps/hellorust"/>
         <linkfile src="keyvalue" dest="apps/keyvalue"/>
-        <linkfile src="keyvalue" dest="apps/fromrust"/>
-        <linkfile src="keyvalue" dest="apps/torust"/>
+        <linkfile src="fromrust" dest="apps/fromrust"/>
+        <linkfile src="torust" dest="apps/torust"/>
         <linkfile src="libbtreemap" dest="libs/libbtreemap"/>
         <linkfile src="Makefile" dest="Makefile"/>
         <linkfile src="start.sh" dest="start.sh"/>
