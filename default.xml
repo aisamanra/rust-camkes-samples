@@ -76,11 +76,7 @@
         <linkfile src="libutils" dest="libs/libutils"/>
     	<linkfile src="libethdrivers" dest="libs/libethdrivers"/>
     </project>
-    <!--
-    <project name="seL4_rust_libs" path="projects/seL4_rust_libs" remote="seL4-projects">
-      <linkfile src="libcompiler-rt" dest="libs/libcompiler-rt"/>
-      </project>
-    -->
+
     <project name="musllibc" path="libs/libmuslc" />
 
 	 <!-- list of 'projects' (i.e repositories), path is relative to the path in remote above -->
@@ -90,6 +86,8 @@
        	<linkfile src="configs" dest="configs"/>
  	    <linkfile src="hellorust" dest="apps/hellorust"/>
         <linkfile src="keyvalue" dest="apps/keyvalue"/>
+        <linkfile src="keyvalue" dest="apps/fromrust"/>
+        <linkfile src="keyvalue" dest="apps/torust"/>
         <linkfile src="libbtreemap" dest="libs/libbtreemap"/>
         <linkfile src="Makefile" dest="Makefile"/>
         <linkfile src="start.sh" dest="start.sh"/>
