@@ -22,14 +22,3 @@ crate-type = ["staticlib"]
 
 [build-dependencies]
 rusty-cheddar = { path = "/home/gdritter/build/rusty-cheddar" }
-
-[dependencies]
-sel4-start = { path = "../../robigalia/sel4-start" }
-# sel4-alloc = { path = "/home/gdritter/build/robigalia/sel4-alloc" }
-
-[dependencies.sel4-sys]
-path = "../../robigalia/sel4-sys"
-default-features = false
-
-[dependencies.compiler_builtins]
-git = "https://github.com/rust-lang-nursery/compiler-builtins"

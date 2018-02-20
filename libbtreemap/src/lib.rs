@@ -1,14 +1,5 @@
-#![no_std]
-
-#![feature(alloc, allocator_internals, lang_items, core_intrinsics, compiler_builtins_lib)]
-#![default_lib_allocator]
-
-#[lang = "panic_fmt"] fn panic_fmt() -> ! { loop {} }
-
-extern crate alloc;
-
-use alloc::boxed::Box;
-use alloc::{BTreeMap,slice};
+use std::collections::{BTreeMap};
+use std::slice;
 
 // This section defines c-like structs
 

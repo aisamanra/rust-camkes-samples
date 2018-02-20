@@ -38,8 +38,6 @@ fn main() {
             format!("-I{}", stage_dir.join("include").display()),
         ])
         .emit_builtins()
-        .use_core()
-        .ctypes_prefix("::ctypes")
         .blacklist_type("seL4_CapRights.*")
         .generate()
         .unwrap()
