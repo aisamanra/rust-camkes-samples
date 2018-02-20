@@ -4,20 +4,11 @@ version = "0.0.1"
 authors = ["Getty Ritter <gdritter@galois.com>"]
 description = "Sample rust hello world on camkes"
 
-# [build-dependencies]
-# bindgen = "0.31.3"
-
 [lib]
 name = "helper"
-path = "src/main.rs"
+path = "src/entrypoint.rs"
 crate-type = ["staticlib"]
 
-[dependencies]
-sel4-start = { path = "../../../../robigalia/sel4-start" }
-
 [dependencies.sel4-sys]
-sel4-start = { path = "../../../../robigalia/sel4-sys" }
+path = "../../../../robigalia/sel4-sys"
 default-features = false
-
-[dependencies.compiler_builtins]
-git = "https://github.com/rust-lang-nursery/compiler-builtins"

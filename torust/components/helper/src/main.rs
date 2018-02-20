@@ -1,12 +1,6 @@
-#![feature(core_intrinsics, compiler_builtins_lib)]
-#![no_std]
-use core::fmt;
-use core::fmt::Write;
-use core::intrinsics;
+#![crate_type = "staticlib"]
 
-extern crate sel4_start;
 extern crate sel4_sys;
-extern crate compiler_builtins;
 
 struct SeL4Serial;
 
