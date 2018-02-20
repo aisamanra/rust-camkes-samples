@@ -1,14 +1,4 @@
-#![feature(core_intrinsics, compiler_builtins_lib)]
-#![no_std]
-use core::fmt;
-use core::fmt::Write;
-use core::intrinsics;
-
-extern crate sel4_start;
-extern crate sel4_sys;
-extern crate compiler_builtins;
-
-pub mod ctypes;
+#![crate_type = "staticlib"]
 
 // This imports our camkes.h rust bindings
 #[allow(dead_code, non_camel_case_types)]
