@@ -10,7 +10,29 @@ for lib in $PY_LIBRARIES
 do
     pip install $lib
 done
+
 (
-    cd tools/xargo && cargo build --release
+    rm -rf rust &&
+        mkdir rust &&
+        cd rust &&
+        curl -O https://infinitenegativeutility.com/rust-x86_64.tar.gz &&
+        tar -xf rust-x86_64.tar.gz
 )
+
+(
+    rm -rf sysroot &&
+        mkdir sysroot &&
+        cd sysroot &&
+        curl -O https://infinitenegativeutility.com/i686-sel4-robigalia.tar.gz &&
+        tar -xf i686-sel4-robigalia.tar.gz
+)
+
+mkdir -p .cargo
+cat >.cargo/config <<EOF
+[build]
+target = "i686-sel4-robigalia"
+rustflags = ["--sysroot", "sysroot"]
+rustc = "rust/bin/rustc"
+EOF
+
 make

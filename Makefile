@@ -17,4 +17,4 @@ qemu-arm: capdl-loader-experimental-image
 	qemu-system-arm -M kzm -nographic -kernel images/capdl-loader-experimental-image-arm-imx31
 
 qemu-i386: capdl-loader-experimental-image
-	qemu-system-i386 -cpu H aswell -m 512 -nographic -kernel images/kernel-ia32-pc99 -initrd images/capdl-loader-experimental-image-ia32-pc99
+	qemu-system-i386 -cpu Haswell -m 512 -nographic -kernel images/kernel-ia32-pc99 -initrd images/capdl-loader-experimental-image-ia32-pc99

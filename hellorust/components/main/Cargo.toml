@@ -16,15 +16,8 @@ description = "Sample rust hello world on camkes"
 
 [lib]
 name = "main"
-path = "src/main.rs"
+path = "src/entrypoint.rs"
 crate-type = ["staticlib"]
 
 [dependencies]
-sel4-start = { path = "../../../../robigalia/sel4-start" }
-
-[dependencies.sel4-sys]
-sel4-start = { path = "../../../../robigalia/sel4-sys" }
-default-features = false
-
-[dependencies.compiler_builtins]
-git = "https://github.com/rust-lang-nursery/compiler-builtins"
+sel4-sys = { path = "../../../../robigalia/sel4-sys" }
